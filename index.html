@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce || Online Web-Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="icon" href="./IMAGES/pngwing.com (1).png">
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 1s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="padding: -10%;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="./IMAGES/pngwing.com (1).png" width="40%"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#payment" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown">Payment</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#payment">Online Payment</a></li>
+                            <li><a class="dropdown-item" href="#payment">COD</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#others">Others</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" id="searchInput" placeholder="Search">
+                    <button class="btn btn-primary" type="button" onclick="searchItems()">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home -->
+    <section id="home" class="animate-fade-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="os mt-3">Organic Store</h1>
+                    <a href="#products" style="text-decoration: none;"><button class="btn btn-success"
+                            style="margin-top: 30px;">Shop More</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="animate-slide-in-right">
+        <h1 style="color: green;" class="m-5 text-center">Products</h1>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="productList">
+                <!-- Products will display here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart -->
+    <section id="cart" class="animate-slide-in-left">
+        <h1 class="m-5 text-center" style="color: green;">Your Cart</h1>
+        <div class="container">
+            <div class="row" id="cartList">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <button class="btn btn-success" onclick="checkout()"
+                style="display: block; margin: 20px auto;">Checkout</button>
+        </div>
+    </section>
+    <!-- checkout -->
+    <section id="cart" class="animate-slide-in-left">
+        <h1 class="m-5 text-center" style="color: green;">Checkout</h1>
+        <div class="container">
+            <div class="row" id="cartList">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div id="checkoutTotal">
+                <!-- Total price will be displayed here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment -->
+    <section id="payment" class="animate-fade-in">
+        <h1 class="m-5 text-center" style="color: green;">Payment</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center order-lg-2">
+                    <img src="./IMAGES/salelogo.jpg" width="50%" style="margin-top: -2%;">
+                </div>
+                <div class="col-md-6 text-center order-lg-1">
+                    <form>
+                        <div id="checkoutTotal">
+                            <!-- Total price will be displayed here -->
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Account Holder</span>
+                            <input type="text" class="form-control" placeholder="Eg: Kishore">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Card Number</span>
+                            <input type="number" class="form-control" placeholder="Eg:123456789009">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" placeholder="CVV">
+                            <span class="input-group-text">Expiry Date</span>
+                            <input type="date" class="form-control">
+                        </div>
+                        <button class="btn btn-success" onclick="payment()">Payment <i class="fa-brands fa-cc-mastercard"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="animate-slide-in-left">
+        <h1 class="m-5 text-center" style="color: green;">Contact</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=..." width="400" height="300" style="border:0;"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Suggestions</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button class="btn btn-success" onclick="send()">Contact <i class="fa-solid fa-phone"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="footer" class="mt-5">
+        <h1 class="m-5 text-center" style="color: whitesmoke;">Information</h1>
+        <div class="container text-center">
+            <img src="./IMAGES/pngwing.com (1).png" width="7%">
+            <h1 class="fhead">Organic Products</h1>
+            <div class="row">
+                <div class="col-md-3 link d-flex flex-column">
+                    <h6>Rules</h6><a>Rule 1</a><a>Rule 2</a><a>Rule 3</a>
+                </div>
+                <div class="col-md-3 link d-flex flex-column">
+                    <h6>Rules</h6><a>Rule 1</a><a>Rule 2</a><a>Rule 3</a>
+                </div>
+                <div class="col-md-3 link d-flex flex-column">
+                    <h6>Rules</h6><a>Rule 1</a><a>Rule 2</a><a>Rule 3</a>
+                </div>
+                <div class="col-md-3 link d-flex flex-column">
+                    <h6>Rules</h6><a>Rule 1</a><a>Rule 2</a><a>Rule 3</a>
+                </div>
+            </div>
+            <div class="icons mt-3">
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+            <h6 style="color: white; font-weight: bold;" class="mt-3">All Rights Reserved By Kishore</h6>
+        </div>
+    </section>
+    <!-- javascript -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
