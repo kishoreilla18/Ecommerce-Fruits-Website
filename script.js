@@ -124,3 +124,33 @@ window.onload = () => {
     loadProducts();
     loadCart();
 };
+
+
+const contactForm = document.querySelector('#contact form');   // <section id="contact"> … <form>
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        // Grab the input values
+        const email    = this.querySelector('input[type="email"]').value.trim();
+        const message  = this.querySelector('textarea').value.trim();
+
+        let errorMsg = '';
+
+        // Validate email
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorMsg += 'Please enter a valid email address.\n';
+        }
+
+        // Validate message / suggestions
+        if (!message) {
+            errorMsg += 'Please enter your suggestions / message.\n';
+        }
+
+        // If anything is wrong, stop the form and alert
+        if (errorMsg) {
+            e.preventDefault();     // keep the form from submitting
+            alert(errorMsg);        // show all problems at once
+        }
+        /* else — everything looks good; the form will submit normally */
+    });
+}
