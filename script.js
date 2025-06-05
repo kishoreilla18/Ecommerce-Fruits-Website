@@ -65,24 +65,18 @@ function loadCart() {
 }
 
 function checkout() {
-    // Calculate the total price of items in the cart
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-
-    // Display the total price in the checkout section
     const checkoutSection = document.getElementById('checkoutTotal');
     checkoutSection.innerHTML = `
     <h3 class="m-3 text-center">Total Price: ₹${totalPrice}</h3>
     <a href="#payment" style="text-decoration: none;"><button class="btn btn-success" onclick="checkout()" style="display: block; margin: 20px auto;">Total amount to Payable</button></a>
 `;
-
-    // Clear the cart
     cart = [];
     localStorage.setItem('cart', JSON.stringify(cart));
     loadCart();
 }
 
 function clearCart() {
-    // Clear the cart and update local storage
     cart = [];
     localStorage.setItem('cart', JSON.stringify(cart));
     loadCart();
@@ -115,10 +109,6 @@ function payment(event){
     alert("Payment Successful, ThankYou");
 }
 
-function send(event){
-    alert("Sent Successfull");
-}
-
 // Load products and cart on page load
 window.onload = () => {
     loadProducts();
@@ -126,31 +116,3 @@ window.onload = () => {
 };
 
 
-const contactForm = document.querySelector('#contact form');   // <section id="contact"> … <form>
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-        // Grab the input values
-        const email    = this.querySelector('input[type="email"]').value.trim();
-        const message  = this.querySelector('textarea').value.trim();
-
-        let errorMsg = '';
-
-        // Validate email
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            errorMsg += 'Please enter a valid email address.\n';
-        }
-
-        // Validate message / suggestions
-        if (!message) {
-            errorMsg += 'Please enter your suggestions / message.\n';
-        }
-
-        // If anything is wrong, stop the form and alert
-        if (errorMsg) {
-            e.preventDefault();     // keep the form from submitting
-            alert(errorMsg);        // show all problems at once
-        }
-        /* else — everything looks good; the form will submit normally */
-    });
-}
